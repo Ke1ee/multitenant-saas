@@ -1,3 +1,19 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: Multi Tenant SaaS Platform
+    name: multitenant-saas
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mt_saas
+    username: mt_user
+    password: mt_pass
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
