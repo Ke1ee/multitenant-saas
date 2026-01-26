@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: mt_saas_db
+    environment:
+      POSTGRES_DB: mt_saas
+      POSTGRES_USER: mt_user
+      POSTGRES_PASSWORD: mt_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - mt_saas_pgdata:/var/lib/postgresql/data
+
+volumes:
+  mt_saas_pgdata:
