@@ -17,3 +17,7 @@ spring:
 
   flyway:
     enabled: true
+
+jwt:
+  secret: my-super-secret-key-that-is-at-least-32-characters-long
+  expiration-hours: 24
