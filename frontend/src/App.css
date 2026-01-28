@@ -1,0 +1,276 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f5f5;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+header {
+  background: #1a1a2e;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info button {
+  background: #e94560;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message {
+  background: #4ecca3;
+  color: #1a1a2e;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+main {
+  padding: 2rem;
+}
+
+.view {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.view h2 {
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.view p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4ecca3;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  background: #4ecca3;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #3db892;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link-btn {
+  background: transparent;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.link-btn:hover {
+  background: #eee;
+}
+
+.result {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f0fff4;
+  border-radius: 4px;
+}
+
+.result code {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #1a1a2e;
+  color: #4ecca3;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.dashboard {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 280px;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-header h3 {
+  color: #1a1a2e;
+}
+
+.sidebar-header button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 1.25rem;
+}
+
+.project-list {
+  list-style: none;
+}
+
+.project-list li {
+  padding: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.project-list li:hover {
+  background: #f5f5f5;
+}
+
+.project-list li.selected {
+  background: #4ecca3;
+  color: #1a1a2e;
+  font-weight: 500;
+}
+
+.main-content {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.inline-form {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #ddd;
+}
+
+.task.todo {
+  border-left-color: #ffd93d;
+  background: #fffef0;
+}
+
+.task.in_progress {
+  border-left-color: #6bcb77;
+  background: #f0fff4;
+}
+
+.task.done {
+  border-left-color: #4d96ff;
+  background: #f0f7ff;
+}
+
+.task-info strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.task-info p {
+  color: #666;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.task select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.no-selection {
+  color: #999;
+  text-align: center;
+  padding: 3rem;
+}
