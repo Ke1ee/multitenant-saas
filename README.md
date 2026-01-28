@@ -20,6 +20,7 @@ A backend for a multi-tenant SaaS application built with Spring Boot. Multiple o
 - Flyway (database migrations)
 - JWT (JSON Web Tokens)
 - Maven
+- (Basic React Frontend)
 
 ## Getting Started
 
