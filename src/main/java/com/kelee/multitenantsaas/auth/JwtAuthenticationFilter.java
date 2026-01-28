@@ -1,5 +1,6 @@
 package com.kelee.multitenantsaas.auth;
 
+import com.kelee.multitenantsaas.tenant.TenantContext;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -28,24 +30,31 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
 
-        String authHeader = request.getHeader("Authorization");
+        try {
+            String authHeader = request.getHeader("Authorization");
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            String token = authHeader.substring(7);
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+                String token = authHeader.substring(7);
 
-            if (jwtService.isValid(token)) {
-                Claims claims = jwtService.parseToken(token);
+                if (jwtService.isValid(token)) {
+                    Claims claims = jwtService.parseToken(token);
 
-                String userId = claims.getSubject();
-                String role = claims.get("role", String.class);
+                    String userId = claims.getSubject();
+                    String tenantId = claims.get("tenantId", String.class);
+                    String role = claims.get("role", String.class);
 
-                var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + role));
+                    TenantContext.setTenantId(UUID.fromString(tenantId));
 
-                var authentication = new UsernamePasswordAuthenticationToken(userId, null, authorities);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                    var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + role));
+
+                    var authentication = new UsernamePasswordAuthenticationToken(userId, null, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
             }
-        }
 
-        filterChain.doFilter(request, response);
+            filterChain.doFilter(request, response);
+        } finally {
+            TenantContext.clear();
+        }
     }
 }
